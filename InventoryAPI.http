@@ -1,0 +1,49 @@
+@InventoryAPI_HostAddress = http://localhost:5159 
+# Use port 5159 on local test
+# Use port 5000 for docker test
+
+### Get all products
+GET {{InventoryAPI_HostAddress}}/api/products
+Accept: application/json
+
+###
+
+### Get a product by ID
+GET {{InventoryAPI_HostAddress}}/api/products/{{productId}}
+Accept: application/json
+
+###
+
+### Create a new product
+POST {{InventoryAPI_HostAddress}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Sample Product",
+  "description": "A sample product",
+  "price": 19.99,
+  "stock": 100,
+  "category": "Sample Category"
+}
+
+###
+
+### Update a product
+PUT {{InventoryAPI_HostAddress}}/api/products/{{productId}}
+Content-Type: application/json
+
+{
+  "name": "Updated Product",
+  "description": "Updated description",
+  "price": 29.99,
+  "stock": 150,
+  "category": "Updated Category"
+}
+
+###
+
+### Delete a product
+DELETE {{InventoryAPI_HostAddress}}/api/products/{{productId}}
+Accept: application/json
+
+###
