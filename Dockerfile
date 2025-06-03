@@ -8,9 +8,10 @@ RUN dotnet restore InventoryAPI/InventoryAPI.csproj
 COPY . ./InventoryAPI/
 
 WORKDIR /src/InventoryAPI
+
 RUN dotnet publish -c Debug -o /app
 
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
 
 WORKDIR /app
 COPY --from=build /app .
